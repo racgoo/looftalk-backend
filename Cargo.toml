@@ -1,0 +1,24 @@
+[package]
+name = "looftalk-backend"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+axum = "0.7.5"
+tokio = { version = "1.39.3", features = ["full"] }
+serde = { version = "1.0.197", features = ["derive"] }
+serde_derive = "1.0.197"
+serde_json = { version = "1.0", features = ["raw_value"] }
+uuid = "1.0"
+redis = "0.25.4"
+dotenv = "0.15.0"
+sqlx = { version = "^0.7.4", features = ["runtime-async-std", "chrono", "uuid", "mysql"] }
+sqlx-mysql = {version="0.7.4", features=["offline"]}
+validator = { version = "0.18.1", features = ["derive"] }
+aws-config = { version = "1.1.7", features = ["behavior-version-latest"] }
+aws-sdk-dynamodb = "1.31.1"
+aws-sdk-s3 = "1.38.0"
+chrono = { version="0.4.37", features = ["serde"]  }
+chrono-tz = "0.9.0"
