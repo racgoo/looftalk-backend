@@ -6,6 +6,7 @@ use crate::controller::create_routes;
 use crate::shared::env::config::{get_address, get_port};
 use crate::shared::init::boot_strap;
 use crate::shared::state::create_app_state;
+use tokio;
 
 #[tokio::main]
 async fn main() {
@@ -17,7 +18,6 @@ async fn main() {
     let server_ip = format!("{}:{}", get_address(), get_port());
     let tcp_listener = tokio::net::TcpListener::bind(server_ip).await.unwrap();
 
-    axum::serve(tcp_listener, application.into_make_service()).await.unwrap_or_else( |err|{
-        println!("{:?}",err)
-    } );
+    let _ = axum::serve(tcp_listener, application.into_make_service())
+    .await;
 }
